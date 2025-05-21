@@ -127,16 +127,19 @@ public:
 };
 
 void client() {
-    Builder* car = new CarBuilder();
-    Builder* manual = new CarManualBuilder();
-    Director* director = new Director(car, manual);
+    Builder* carBld = new CarBuilder();
+    Builder* manBld = new CarManualBuilder();
+    Director* director = new Director(carBld, manBld);
     director->BuildMinimal();
 
-    // TODO:
+    Car* car = ((CarBuilder*)carBld)->getResult();
+    CarManual* manual = ((CarManualBuilder*)manBld)->getResult();
+    
+    // 此处打印或调试
 
     delete director;
-    delete manual;
-    delete car;
+    delete manBld;
+    delete carBld;
 }
 
 int main(int argc, char* argv[]) {
