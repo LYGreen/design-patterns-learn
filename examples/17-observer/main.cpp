@@ -8,6 +8,7 @@ public:
     virtual void Update(const std::string& message_from_subject) = 0;
 };
 
+// 用于记录哪些用户订阅了哪个观察者
 class ISubject {
 public:
     virtual ~ISubject() {};
@@ -47,8 +48,6 @@ public:
 private:
     std::list<IObserver*> list_observer_;
     std::string message_;
-
-
 
     void HowManyObserver() {
         std::cout << "There are " << list_observer_.size() << " observer in the list.\n";
